@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,14 +17,21 @@ namespace PassGenerator2
             InitializeComponent();
         }
 
+        private void PrintProductVersion()
+        {
+            this.Text = "Build: " +
+               Application.ProductVersion;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Text = "Pass generator (by 3eLLenKa)";
 
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             this.textBox1.ReadOnly = true;
+
+            PrintProductVersion();
         }
 
         private bool check_symbols(char symbols)
@@ -44,7 +51,7 @@ namespace PassGenerator2
         {
             string digits;
             char symbols;
-            int size = Convert.ToInt32(comboBox1.Text);
+            int size = Convert.ToInt32(numericUpDown1.Text);
             bool check = checkBox1.Checked;
 
             Random rnd = new Random();
@@ -73,11 +80,6 @@ namespace PassGenerator2
                     textBox1.Text += digits;
                 }
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
     }
 }
